@@ -122,3 +122,7 @@ This repository is active.
 
 Canonical fields are added only when earned.  
 Baselines evolve as understanding deepens.
+
+
+## License
+See `LICENSE.md` for usage terms. Source data ownership is documented in `DATA_PROVENANCE.md`.
