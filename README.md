@@ -64,7 +64,7 @@ Describes observed system size behavior under controlled conditions.
 This notebook:
 - examines size distributions by cohort and context  
 - identifies stable reference behavior  
-- surfaces structural irregularities  
+- surfaces distributional irregularities  
 
 Outputs remain descriptive.
 
@@ -80,6 +80,8 @@ This notebook:
 - avoids predictive framing  
 
 The resulting function is intended for downstream use, not interpretation here.
+
+Residuals produced here are reference coordinates only and are not interpreted, thresholded, or evaluated in this repository
 
 ---
 
