@@ -17,6 +17,16 @@ It operates within them.
 The objective is not to explain system behavior.  
 The objective is to determine what “system size” means, where it is stable, and under what conditions it can be reasoned about safely.
 
+### Canonical Entity and Identifier
+
+This repository operates at the **system level**.
+
+A system is defined as a physical residential photovoltaic installation,
+identified canonically by `tts_link_id`.
+
+All canonical outputs produced by this repository are **system-keyed**
+and must contain **exactly one row per `tts_link_id`**.
+
 ---
 
 ## Scope
