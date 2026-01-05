@@ -61,7 +61,9 @@ This notebook:
 - applies Repo 0 raw schema  
 - derives `installation_year`  
 - classifies temporal and size-related violations  
-- produces diagnostics and canonical outputs  
+- produces row-level diagnostics
+- produces system-level canonical outputs **only after collapsing to one row per `tts_link_id`**
+
 
 No exploratory analysis occurs here.
 
@@ -86,7 +88,8 @@ Formalizes expectation.
 
 This notebook:
 - defines an expected size function based on established baselines  
-- produces reference mappings and residuals  
+- produces expected-size reference mappings
+- produces system-level size deltas relative to baseline (not interpreted here) - These deltas are descriptive reference coordinates and do not constitute deviation evaluation.
 - avoids predictive framing  
 
 The resulting function is intended for downstream use, not interpretation here.
@@ -100,6 +103,9 @@ Residuals produced here are reference coordinates only and are not interpreted, 
 Outputs are explicit and versioned.
 
 Canonical outputs:
+- are keyed by `tts_link_id`
+- contain exactly one row per system
+- may not contain duplicate system identifiers
 - are stable  
 - are reusable  
 - may be consumed downstream  
