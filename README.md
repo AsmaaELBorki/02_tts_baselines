@@ -1,119 +1,120 @@
-# System Size Determinants
+# Repo 2 — Canonical System Identity and Size Descriptives
 
-This repository is the first execution layer in the Tracking the Sun analytical architecture.
+This repository is the first **execution layer** in the Tracking the Sun analytical program.
 
-It establishes defensible baselines around system size.  
-Nothing downstream is allowed to reason about size without passing through this layer.
+Its sole purpose is to establish a **defensible, system-level analytical substrate**
+from raw Tracking the Sun data, under the constraints defined upstream.
 
----
-
-## Role Within the Architecture
-
-This repository applies the constraints defined in Repo 0.
-
-It does not define schema, roles, or assumptions.  
-It operates within them.
-
-The objective is not to explain system behavior.  
-The objective is to determine what “system size” means, where it is stable, and under what conditions it can be reasoned about safely.
-
-### Canonical Entity and Identifier
-
-This repository operates at the **system level**.
-
-A system is defined as a physical residential photovoltaic installation,
-identified canonically by `tts_link_id`.
-
-All canonical outputs produced by this repository are **system-keyed**
-and must contain **exactly one row per `tts_link_id`**.
+Nothing downstream is permitted to reason about system size, structure, scaling,
+or deviation unless it is derived from the canonical outputs of this repository.
 
 ---
 
-## Scope
+## Role Within the Program Architecture
+
+This repository operates strictly under:
+
+- **Repo 0** — Program Canon and analytical ordering
+- **Repo 1** — Data generation, measurement limits, column roles, and contracts
+
+This repository:
+- does not define entities, roles, or assumptions
+- does not reinterpret upstream constraints
+- does not introduce new analytical structure
+
+It executes only what has been explicitly permitted upstream.
+
+---
+
+## Canonical Entity and Analytical Grain
+
+The canonical analytical entity in this repository is:
+
+**Entity:**  
+A physical residential photovoltaic system.
+
+**Canonical identifier:**  
+`tts_link_id`
+
+**Analytical grain:**  
+Exactly **one row per `tts_link_id`**.
+
+No system-level artifact may be produced unless this grain invariant is satisfied.
+
+Any identifier failing admissibility criteria defined in Repo 1 constitutes
+a hard violation and prohibits system-level entity construction.
+
+---
+
+## Scope and Responsibilities
 
 This repository is responsible for:
 
-- loading raw Tracking the Sun data  
-- applying raw schema validation  
-- deriving canonically approved fields  
-- classifying violations and exclusions  
-- establishing descriptive baselines for system size  
+- loading raw Tracking the Sun data as reported
+- applying raw schema validation
+- declaring and enforcing canonical system identity
+- collapsing multiple reported rows into one system-level record
+- classifying violations and exclusions
+- producing **descriptive** system size distributions
 
-This repository does not:
+This repository is explicitly **not** responsible for:
 
-- make causal claims  
-- perform predictive analysis  
-- define deviation logic  
-- reinterpret upstream constraints  
+- defining expected size behavior
+- computing deviations or residuals
+- assigning regimes
+- evaluating abnormality or risk
+- making causal or predictive claims
 
 ---
 
 ## Notebook Structure
 
-Analytical work is sequenced deliberately.
+Analytical work in this repository is intentionally minimal and strictly ordered.
 
-### 01 — Load and Validate
-
-Establishes trust boundaries.
+### 01 — Canonical System Identity and Grain
 
 This notebook:
-- loads raw data  
-- applies Repo 0 raw schema  
-- derives `installation_year`  
-- classifies temporal and size-related violations  
-- produces row-level diagnostics
-- produces system-level canonical outputs **only after collapsing to one row per `tts_link_id`**
 
+- loads raw Tracking the Sun data
+- applies schema and reporting validity checks
+- **formally declares `tts_link_id` as the canonical system identifier**
+- validates identifier admissibility using Repo 1 contracts
+- groups rows by `tts_link_id` without aggregation assumptions
+- reconciles values strictly by column role
+- flags irreconcilable systems
+- enforces the one-row-per-system grain invariant
+
+Outputs from this notebook represent the **only admissible system-level dataset**
+used downstream.
 
 No exploratory analysis occurs here.
 
 ---
 
-### 02 — Size Distributions and Baselines
-
-Describes observed system size behavior under controlled conditions.
+### 02 — Descriptive System Size Distributions
 
 This notebook:
-- examines size distributions by cohort and context  
-- identifies stable reference behavior  
-- surfaces distributional irregularities  
 
-Outputs remain descriptive.
+- consumes the canonical system-level dataset
+- describes observed system size distributions by declared context
+- computes counts, ranges, and quantiles
+- characterizes dispersion and temporal drift
 
----
-
-### 03 — Expected Size Function
-
-Formalizes expectation.
-
-This notebook:
-- defines an expected size function based on established baselines  
-- produces expected-size reference mappings
-- produces system-level size deltas relative to baseline (not interpreted here) - These deltas are descriptive reference coordinates and do not constitute deviation evaluation.
-- avoids predictive framing  
-
-The resulting function is intended for downstream use, not interpretation here.
-
-Residuals produced here are reference coordinates only and are not interpreted, thresholded, or evaluated in this repository
+All outputs remain **descriptive**.
+No normative, expected, or evaluative interpretation is introduced.
 
 ---
 
 ## Outputs
 
-Outputs are explicit and versioned.
+Canonical outputs produced by this repository:
 
-Canonical outputs:
-- are keyed by `tts_link_id`
+- are keyed exclusively by `tts_link_id`
 - contain exactly one row per system
-- may not contain duplicate system identifiers
-- are stable  
-- are reusable  
-- may be consumed downstream  
+- are versioned and immutable once published
+- are safe for downstream consumption
 
-Diagnostics:
-- document exclusions and violations  
-- are retained for auditability  
-- are not hidden or collapsed  
+Diagnostics and exclusions are retained explicitly for auditability.
 
 ---
 
@@ -121,16 +122,19 @@ Diagnostics:
 
 Downstream repositories may assume:
 
-- canonical fields defined here are stable  
-- size baselines are defensible  
-- exclusions are intentional  
+- system identity is stable and canonical
+- analytical grain is enforced
+- size descriptives are empirically grounded
+- exclusions are intentional and documented
 
 Downstream repositories may not:
-- redefine size semantics  
-- bypass diagnostics  
-- reinterpret exclusions  
 
-Any change to canonical outputs requires review.
+- redefine system identity
+- alter grain
+- reinterpret exclusions
+- derive expectations without regime logic
+
+Any change to canonical outputs requires upstream review.
 
 ---
 
@@ -138,9 +142,5 @@ Any change to canonical outputs requires review.
 
 This repository is active.
 
-Canonical fields are added only when earned.  
-Baselines evolve as understanding deepens.
-
-
-## License
-See `LICENSE.md` for usage terms. Source data ownership is documented in `DATA_PROVENANCE.md`.
+Canonical artifacts are added only when earned.
+Descriptive baselines evolve as understanding improves.
