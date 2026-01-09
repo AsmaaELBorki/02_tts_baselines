@@ -46,6 +46,24 @@ a hard violation and prohibits system-level entity construction.
 
 ---
 
+## System-Level Collapse Constraints
+
+Empirical inspection of within-system variability reveals that nearly all
+raw columns vary across administrative records for the same `tts_link_id`.
+With the exception of internal multiphase linkage fields, the raw dataset
+does not contain stable, invariant system-level attributes. As a result,
+row-to-system collapse in this repository does **not** attempt to reconcile
+or infer physical system characteristics (e.g. size, price, installation date).
+
+Instead, collapse is restricted to the construction of a **minimal
+system-level index** that preserves canonical identity and explicitly records
+diagnostic indicators of reporting multiplicity and instability. These
+diagnostics are retained to support downstream cohort definition, temporal
+semantics, and analytically justified exclusions, rather than being resolved
+or smoothed at this stage.
+
+---
+
 ## Scope and Responsibilities
 
 This repository is responsible for:
