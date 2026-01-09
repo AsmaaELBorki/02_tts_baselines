@@ -73,7 +73,7 @@ This repository is responsible for:
 - declaring and enforcing canonical system identity
 - collapsing multiple reported rows into one system-level record
 - classifying violations and exclusions
-- producing **descriptive** system size distributions
+- producing descriptive system size distributions, context-conditional baselines, and dispersion measures at the system level under explicit temporal scope restrictions.
 
 This repository is explicitly **not** responsible for:
 
@@ -114,6 +114,7 @@ No exploratory analysis occurs here.
 This notebook:
 
 - consumes the canonical system-level dataset
+- defines context-conditional baseline system sizes for downstream deviation analysis
 - describes observed system size distributions by declared context
 - computes counts, ranges, and quantiles
 - characterizes dispersion and temporal drift
@@ -132,7 +133,9 @@ Canonical outputs produced by this repository:
 - are versioned and immutable once published
 - are safe for downstream consumption
 
-Diagnostics and exclusions are retained explicitly for auditability.
+Diagnostics and exclusions are retained explicitly for auditability. 
+Descriptive outputs include size distributions, context-conditional baselines, and dispersion measures; all outputs are descriptive and non-normative.
+
 
 ---
 
@@ -158,7 +161,8 @@ Any change to canonical outputs requires upstream review.
 
 ## Status
 
-This repository is active.
+This repository is complete.
 
 Canonical artifacts are added only when earned.
 Descriptive baselines evolve as understanding improves.
+No further analytical logic will be added without upstream revision.
